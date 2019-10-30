@@ -1,0 +1,7 @@
+lxml
+selenium
+requests
+xlsxwriter
+xlrd
+
+#shutil, fake_useragent, beautifulsoap4

@@ -5,7 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 class App:
 
-    def __init__(self, username='xawbeenregmi', password='testing', target_username='dataminer2060',
+    def __init__(self, username='xawbeenregmi', password='fuckingworld', target_username='xawbeenregmi',
                  path='E:/Projects/instaPhotos'):
         self.username = username
         self.password = password
@@ -17,8 +17,13 @@ class App:
         sleep(3)
         #calling the login function
         self.log_in()
+        sleep(2)
+        self.close_dialoguebox()
+        sleep(2)
+        self.search_targetUser()
+        sleep(2)
 
-        sleep(3)
+        input("stop for now")
         self.driver.close()
 
 
@@ -33,10 +38,20 @@ class App:
         password_input.send_keys(self.password)
 
         password_input.submit()
-        input("stop for now")
 
 
 
+    def close_dialoguebox(self):
+        try:
+            select_notnow = self.driver.find_element_by_xpath('//html/body/div[3]/div/div/div[3]/button[2]')
+            select_notnow.click()
+        except Exception:
+            pass
+
+
+    def search_targetUser(self):
+        target_user = self.driver.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')
+        target_user.send_keys(self.target_username)
 
 
 if __name__ == '__main__':
